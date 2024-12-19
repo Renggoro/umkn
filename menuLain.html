@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMKM Sepokat Selayar Lumpia Alpukat</title>
+    <!-- Tambahkan CSS dan JS Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body {
+        overflow: hidden;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    @media (max-width:676px) {
+        body {
+            overflow: scroll;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 600;
+    }
+
+    p,
+    a,
+    li {
+        font-weight: 400;
+    }
+</style>
+
+<body class="bg-gradient-to-b from-green-50 to-green-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-green-950 text-white p-4 fixed top-0 w-full shadow-md z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold"><span class="text-yellow-500">Sepokat</span> Selayar</h1>
+            <!-- Tombol Hamburger untuk Mobile -->
+            <button id="menu-toggle" class="block md:hidden focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Menu -->
+            <ul id="menu" class="hidden md:flex space-x-4">
+                <li><a href="./index.html" class="hover:text-yellow-500">Beranda</a></li>
+                <li><a href="./menu.html" class="hover:text-yellow-500">Menu</a></li>
+                <li><a href="./alamat.html" class="hover:text-yellow-500">Alamat</a></li>
+                <li><a href="./kontak.html" class="hover:text-yellow-500">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar untuk Mobile -->
+    <div id="sidebar" class="fixed inset-0 bg-green-950 bg-opacity-90 z-40 hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-sidebar" class="text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="flex flex-col items-center space-y-6">
+            <li><a href="./index.html" class="text-white text-2xl hover:text-yellow-500">Beranda</a></li>
+            <li><a href="./menu.html" class="text-white text-2xl hover:text-yellow-500">Menu</a></li>
+            <li><a href="./alamat.html" class="text-white text-2xl hover:text-yellow-500">Alamat</a></li>
+            <li><a href="./kontak.html" class="text-white text-2xl hover:text-yellow-500">Kontak</a></li>
+        </ul>
+    </div>
+
+    <!-- Script Toggle Menu -->
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+        const sidebar = document.getElementById("sidebar");
+        const closeSidebar = document.getElementById("close-sidebar");
+
+        // Toggle Navbar menu
+        menuToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("hidden");
+        });
+
+        // Close Sidebar when clicking on close button
+        closeSidebar.addEventListener("click", () => {
+            sidebar.classList.add("hidden");
+        });
+
+        // Optional: Close sidebar when clicking outside of it
+        sidebar.addEventListener("click", (event) => {
+            if (event.target === sidebar) {
+                sidebar.classList.add("hidden");
+            }
+        });
+    </script>
+
+    <div class="mx-auto px-6 mt-16 mb-2">
+        <h3 class="text-3xl font-bold text-green-800 text-center mt-20 mb-10">Menu Lainnya</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpukat Kocok</h2>
+                <p class="text-gray-600">M: 20K, L: 23K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Milo</h2>
+                <p class="text-gray-600">M: 20K, L: 23K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Coklat</h2>
+                <p class="text-gray-600">M: 20K, L: 23K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Ovaltine</h2>
+                <p class="text-gray-600">M: 20K, L: 23K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Dancow</h2>
+                <p class="text-gray-600">M: 22K, L: 25K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Keju</h2>
+                <p class="text-gray-600">M: 20K, L: 23K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Greentea</h2>
+                <p class="text-gray-600">M: 20K, L: 23K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Cookies</h2>
+                <p class="text-gray-600">M: 20K, L: 23K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Cappuccino</h2>
+                <p class="text-gray-600">M: 20K, L: 23K</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 text-center transform transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-green-700 mb-2">Alpucok Mix</h2>
+                <p class="text-gray-600">M: 23K, L: 26K</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-green-950 text-white font-semibold text-center py-4 fixed bottom-0 w-full">
+        <p>&copy; 2024 Sepokat Selayar Lumpia Alpukat. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html> 8

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMKM Sepokat Selayar Lumpia Alpukat</title>
+    <!-- Tambahkan CSS dan JS Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+</head>
+<style>
+    body {
+        overflow: hidden;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 600;
+    }
+
+    p,
+    a,
+    li {
+        font-weight: 400;
+    }
+</style>
+
+<body class="bg-gradient-to-b from-green-50 to-green-100 text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-green-950 text-white p-4 fixed top-0 w-full shadow-md z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold"><span class="text-yellow-500">Sepokat</span> Selayar</h1>
+            <!-- Tombol Hamburger untuk Mobile -->
+            <button id="menu-toggle" class="block md:hidden focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Menu -->
+            <ul id="menu" class="hidden md:flex space-x-4">
+                <li><a href="./index.html" class="hover:text-yellow-500">Beranda</a></li>
+                <li><a href="./menu.html" class="hover:text-yellow-500">Menu</a></li>
+                <li><a href="./alamat.html" class="hover:text-yellow-500">Alamat</a></li>
+                <li><a href="./kontak.html" class="hover:text-yellow-500">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar untuk Mobile -->
+    <div id="sidebar" class="fixed inset-0 bg-green-950 bg-opacity-90 z-40 hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-sidebar" class="text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="flex flex-col items-center space-y-6">
+            <li><a href="./index.html" class="text-white text-2xl hover:text-gray-200">Beranda</a></li>
+            <li><a href="./menu.html" class="text-white text-2xl hover:text-gray-200">Menu</a></li>
+            <li><a href="./alamat.html" class="text-white text-2xl hover:text-gray-200">Alamat</a></li>
+            <li><a href="./kontak.html" class="text-white text-2xl hover:text-gray-200">Kontak</a></li>
+        </ul>
+    </div>
+
+    <!-- Script Toggle Menu -->
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+        const sidebar = document.getElementById("sidebar");
+        const closeSidebar = document.getElementById("close-sidebar");
+
+        // Toggle Navbar menu
+        menuToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("hidden");
+        });
+
+        // Close Sidebar when clicking on close button
+        closeSidebar.addEventListener("click", () => {
+            sidebar.classList.add("hidden");
+        });
+
+        // Optional: Close sidebar when clicking outside of it
+        sidebar.addEventListener("click", (event) => {
+            if (event.target === sidebar) {
+                sidebar.classList.add("hidden");
+            }
+        });
+    </script>
+
+
+    <section
+        style="background: url(./sepokat.png); background-position: center; background-repeat: repeat; background-size: cover;"
+        id="beranda" class="h-screen relative"><br>
+        <!-- Ikon Font Awesome -->
+        <i class="fa-solid fa-shoe-prints absolute mt-12 left-2 text-4xl text-green-500 z-50"></i>
+        <i class="fa-solid fa-star absolute mt-12 right-2 text-4xl text-red-500"></i>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-950 text-white font-semibold text-center py-4 fixed bottom-0 w-full">
+        <p>&copy; 2024 Sepokat Selayar Lumpia Alpukat. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html> 8
